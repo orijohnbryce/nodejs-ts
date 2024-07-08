@@ -39,6 +39,8 @@ app.get("/cars", async (req: Request, res: Response) => {
                 return false;                            
             if (req.query.maxprice && c.price > +req.query.maxprice)                
                 return false;                            
+            if (req.query.search && !c.name.includes(String(req.query.search)))
+                return false;
             return true;
         })
 
