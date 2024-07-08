@@ -31,8 +31,7 @@ async function writeCars(cars: Car[]): Promise<void> {
 
 app.get("/cars", async (req: Request, res: Response) => {
     try {
-        const cars = await readCars();
-        throw new Error("Some Error");        
+        const cars = await readCars();        
         res.status(200).json(cars);
     } catch (error) {
         console.log("Failed to retrieve car. info:", error);
