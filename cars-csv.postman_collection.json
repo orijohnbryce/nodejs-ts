@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "9f268862-4fd5-4e83-a80b-a7645a287689",
+		"name": "cars-csv",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23409976"
+	},
+	"item": [
+		{
+			"name": "post new car",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{        \r\n    \"name\": \"Tesla\",\r\n    \"km\": 45000,\r\n    \"engine\": \"EL2024\",\r\n    \"year\": 2024,\r\n    \"price\": 19500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/cars",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cars",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/cars",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete car",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/cars/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cars",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get car by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/cars/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cars",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update car",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{        \r\n    \"name\": \"tesla\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/cars/1720452689363",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cars",
+						"1720452689363"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
