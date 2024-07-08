@@ -31,7 +31,17 @@ async function writeCars(cars: Car[]): Promise<void> {
 
 app.get("/cars", async (req: Request, res: Response) => {
     try {
-        const cars = await readCars();        
+        let cars = await readCars();        
+
+        // filter out some cars if filter added.           
+        cars = cars.filter((c)=>{
+            if (req.query.minprice && c.price < +req.query.minprice) 
+                return false;                            
+            if (req.query.maxprice && c.price > +req.query.maxprice)                
+                return false;                            
+            return true;
+        })
+
         res.status(200).json(cars);
     } catch (error) {
         console.log("Failed to retrieve car. info:", error);
