@@ -32,10 +32,11 @@ async function writeCars(cars: Car[]): Promise<void> {
 app.get("/cars", async (req: Request, res: Response) => {
     try {
         const cars = await readCars();
-        res.json(cars);
+        throw new Error("Some Error");        
+        res.status(200).json(cars);
     } catch (error) {
         console.log("Failed to retrieve car. info:", error);
-        res.send("Failed to retrieve car. Retry latter");
+        res.status(500).send("Failed to retrieve car. Retry latter");
     }
 });
 
@@ -48,7 +49,7 @@ app.get("/cars/:id", async (req: Request, res: Response) => {
             return String(c.id) === req.params.id;
         });
         if (car) {
-            res.json(car);
+            res.status(200).json(car);
         } else {
             res.send("Car-id not found");
         }
@@ -67,10 +68,10 @@ app.post("/cars", async (req: Request, res: Response) => {
         const cars = await readCars();
         cars.push(newCar);
         await writeCars(cars);
-        res.send("new car created");
+        res.status(201).send("new car created");
     } catch (error) {
         console.log("Error post new car. info: ", error);
-        res.send("Failed to retrieve car, retry latter");
+        res.status(500).send("Failed to retrieve car, retry latter");
     }
 });
 
@@ -81,13 +82,13 @@ app.put("/cars/:id", async (req, res) => {
         if (index !== -1) {
             cars[index] = { ...cars[index], ...req.body };
             await writeCars(cars);
-            res.send("car updated!");
+            res.status(200).send("car updated!");
         } else {
-            res.send("Car id not found");
+            res.status(400).send("Car id not found");
         }
     } catch (error) {
         console.log("Error put car. info: ", error);
-        res.send("Failed to update car, retry latter");
+        res.status(500).send("Failed to update car, retry latter");
     }
 });
 
@@ -98,13 +99,13 @@ app.delete("/cars/:id", async (req, res) => {
         
         if (cars.length !== filteredCars.length) {
             await writeCars(filteredCars);
-            res.send("car deleted");
+            res.status(204).send("car deleted");
         } else {
-            res.send("Car not found to delete");
+            res.status(400).send("Car not found to delete");
         }
     } catch (error) {
         console.log("Error delete car. info: ", error);
-        res.send("Failed to delete car, retry latter");
+        res.status(500).send("Failed to delete car, retry latter");
     }
 });
 
