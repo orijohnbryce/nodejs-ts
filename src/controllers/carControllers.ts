@@ -1,7 +1,13 @@
 import express, { Request, Response } from "express";
 import { readCars, writeCars } from "../dal/dal";
 import CarModel from "../models/carModel";
-import { getCarById, getCars } from "../services/carServices";
+import {
+  createCar,
+  deleteCar,
+  getCarById,
+  getCars,
+  updateCar,
+} from "../services/carServices";
 
 export const carRoutes = express.Router();
 
@@ -32,13 +38,7 @@ carRoutes.get("/cars/:id", async (req: Request, res: Response) => {
 
 carRoutes.post("/cars", async (req: Request, res: Response) => {
   try {
-    const newCar: CarModel = {
-      id: Date.now().toString(),
-      ...req.body,
-    };
-    const cars = await readCars();
-    cars.push(newCar);
-    await writeCars(cars);
+    await createCar(req.body);
     res.status(201).send("new car created");
   } catch (error) {
     console.log("Error post new car. info: ", error);
@@ -46,18 +46,12 @@ carRoutes.post("/cars", async (req: Request, res: Response) => {
   }
 });
 
-carRoutes.put("/cars/:id", async (req, res) => {
+carRoutes.put("/cars/", async (req, res) => {
   try {
-    const cars = await readCars();
-    const index = cars.findIndex((c) => String(c.id) === req.params.id);
-    if (index !== -1) {
-      cars[index] = { ...cars[index], ...req.body };
-      await writeCars(cars);
-      res.status(200).send("car updated!");
-    } else {
-      res.status(400).send("Car id not found");
-    }
+    await updateCar(req.body);
   } catch (error) {
+    // for knownError as "id not found", need to return status 4xx
+
     console.log("Error put car. info: ", error);
     res.status(500).send("Failed to update car, retry latter");
   }
@@ -65,16 +59,10 @@ carRoutes.put("/cars/:id", async (req, res) => {
 
 carRoutes.delete("/cars/:id", async (req, res) => {
   try {
-    const cars = await readCars();
-    const filteredCars = cars.filter((c) => String(c.id) !== req.params.id);
-
-    if (cars.length !== filteredCars.length) {
-      await writeCars(filteredCars);
-      res.status(204).send("car deleted");
-    } else {
-      res.status(400).send("Car not found to delete");
-    }
+    await deleteCar(req.params.id);
   } catch (error) {
+    // for knownError as "id not found", need to return status 4xx
+
     console.log("Error delete car. info: ", error);
     res.status(500).send("Failed to delete car, retry latter");
   }

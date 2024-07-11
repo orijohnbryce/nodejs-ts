@@ -1,4 +1,4 @@
-import { readCars } from "../dal/dal";
+import { readCars, writeCars } from "../dal/dal";
 import CarModel from "../models/carModel";
 
 export async function getCars(
@@ -31,13 +31,35 @@ export async function getCarById(id: string): Promise<CarModel | undefined> {
 }
 
 export async function createCar(car: CarModel): Promise<void> {
-    
+    const newCar: CarModel = {
+        ...car,
+        id: Date.now().toString(),
+      };
+      const cars = await readCars();
+      cars.push(newCar);
+      await writeCars(cars);
 }
 
-export async function updateCar(car: CarModel): Promise<void> {
+export async function updateCar(car: Partial<CarModel>): Promise<void> {
     
+    const cars = await readCars();
+    const index = cars.findIndex((c) => String(c.id) === car.id);
+    
+    if (index !== -1) {
+      cars[index] = { ...cars[index], ...car };
+      await writeCars(cars);      
+    } else {
+      throw new Error("Car ID not found!");      
+    }
 }
 
 export async function deleteCar(id: string): Promise<void> {
-    
+    const cars = await readCars();
+    const filteredCars = cars.filter((c) => String(c.id) !== id);
+
+    if (cars.length !== filteredCars.length) {
+      await writeCars(filteredCars);      
+    } else {
+      // throw new Error("Car ID not found!");
+    }
 }
