@@ -1,6 +1,4 @@
 import express, { Request, Response } from "express";
-import { readCars, writeCars } from "../dal/dal";
-import CarModel from "../models/carModel";
 import {
   createCar,
   deleteCar,
@@ -8,6 +6,8 @@ import {
   getCars,
   updateCar,
 } from "../services/carServices";
+import authMiddleware from "../middlewares/authMiddleware";
+import validateCarAllFields from "../middlewares/validationMiddleware";
 
 export const carRoutes = express.Router();
 
@@ -21,7 +21,7 @@ carRoutes.get("/cars", async (req: Request, res: Response) => {
   }
 });
 
-carRoutes.get("/cars/:id", async (req: Request, res: Response) => {
+carRoutes.get("/cars/:id", authMiddleware, async (req: Request, res: Response) => {
   try {
     const car = await getCarById(req.params.id);
 
@@ -36,7 +36,7 @@ carRoutes.get("/cars/:id", async (req: Request, res: Response) => {
   }
 });
 
-carRoutes.post("/cars", async (req: Request, res: Response) => {
+carRoutes.post("/cars", validateCarAllFields, async (req: Request, res: Response) => {
   try {
     await createCar(req.body);
     res.status(201).send("new car created");
@@ -46,7 +46,7 @@ carRoutes.post("/cars", async (req: Request, res: Response) => {
   }
 });
 
-carRoutes.put("/cars/", async (req, res) => {
+carRoutes.put("/cars/", validateCarAllFields, async (req, res) => {
   try {
     await updateCar(req.body);
   } catch (error) {
