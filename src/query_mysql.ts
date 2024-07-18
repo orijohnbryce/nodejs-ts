@@ -2,15 +2,15 @@
 const mysql = require("mysql2");
 
 // Function to run an SQL query
-function runQuery(query: string, qParams: any[] = []): Promise<any[]> {
+export default function runQuery(query: string, qParams: any[] = []): Promise<any[]> {
   return new Promise((resolve, reject) => {
     // Create a connection to the database
     const connection = mysql.createConnection({
       user: "root",
       password: "",
-      port: 3306, // also default
+      port: 3309, // also default
       host: "localhost",
-      database: "ttd_1",
+      database: "store",
     });
 
     // Connect to the database
@@ -37,11 +37,3 @@ function runQuery(query: string, qParams: any[] = []): Promise<any[]> {
     });
   });
 }
-
-runQuery("select * from test1;")
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((e) => {
-    console.log(e);
-  });
