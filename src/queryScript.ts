@@ -26,11 +26,11 @@ async function asyncQuery(q : string) {
 // asyncQuery(`INSERT INTO client (id, name, email) values(1, 'Eli', 'avi@x.com')`)
 // asyncQuery(`INSERT INTO client (name, email) values('Eli', 'avi@x.com')`)
 // asyncQuery(`INSERT INTO client (name) values('Eli')`)
-// asyncQuery(`INSERT INTO client (name, email) 
+// asyncQuery(`INSERT INTO client (name, email)
 //     values
 //     ('Eli', 'avi@x.com'),
 //     ('Eli', 'avi@x.com'),
-//     ('Eli', 'avi@x.com')    
+//     ('Eli', 'avi@x.com')
 //     `)
 
 //// READ
@@ -62,4 +62,16 @@ async function asyncQuery(q : string) {
 // asyncQuery("INSERT INTO orders (client_id, note) values(1, 'please do it fast')");
 // asyncQuery("INSERT INTO orders (client_id, note, created) values(2, 'no note', '2020-04-28 19:00:45')");
 
-asyncQuery('select * from product;')
+
+
+asyncQuery('select * from car;')
+
+
+
+
+
+
+
+
+
+

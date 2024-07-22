@@ -8,9 +8,9 @@ export default function runQuery(query: string, qParams: any[] = []): Promise<an
     const connection = mysql.createConnection({
       user: "root",
       password: "",
-      port: 3309, // also default
+      port: 3306, // also default
       host: "localhost",
-      database: "store",
+      database: "cars",
     });
 
     // Connect to the database
