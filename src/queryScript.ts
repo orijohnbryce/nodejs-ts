@@ -64,14 +64,124 @@ async function asyncQuery(q : string) {
 
 
 
-asyncQuery('select * from car;')
+//// homework - orderItem 
+// asyncQuery(`CREATE TABLE orderItems (
+//     id INT PRIMARY KEY AUTO_INCREMENT,
+//     order_id INT,
+//     product_id INT,
+//     amount INT,
+//     FOREIGN KEY (order_id) REFERENCES orders(id),
+//     FOREIGN KEY (product_id) REFERENCES product(id)
+// );`)
+
+//// add new orderItem record
+// asyncQuery(`INSERT INTO orderItems (order_id, product_id, amount) values(1, 2, 4)`);
+
+//// select with condition
+// asyncQuery(`SELECT * FROM orders WHERE LENGTH(note) > 2`);
+
+//// update price
+// asyncQuery(`UPDATE product SET price=19.7 WHERE name='apple'`);
+
+//// add new column to an exists table
+// asyncQuery(`ALTER TABLE product ADD COLUMN category VARCHAR(50) DEFAULT food;`);
+
+//// drop column from table
+// asyncQuery(`ALTER TABLE product DROP COLUMN category;`)
+
+// ###################  CARS  ##########################
+
+//// limit
+// asyncQuery(`select * from car LIMIT 2;`)
+
+//// change table name
+// asyncQuery(`RENAME TABLE car  <old-name> TO <new-name>;`)
+
+// //// 1
+// asyncQuery(`INSERT INTO car 
+//         (ID,Model,Year,Subtype,Engine,KM,Cost) 
+//         values(100, 'Suzuki', 2020, 'Alto', 1000, 100000, 200);`);
+
+// //// 2
+// asyncQuery(`UPDATE car SET KM=12000 WHERE ID=100;`);
 
 
+// //// 3
+// asyncQuery(`DELETE FROM car WHERE ID=100;`);
 
 
+////  AND
+// asyncQuery(`SELECT * FROM car WHERE cost > 1000 AND year < 2010;`)
+
+////  OR
+// asyncQuery(`SELECT cost, year FROM car WHERE year < 2001 OR cost > 1490`)
+
+//// BETWEEN
+// asyncQuery(`SELECT year FROM car WHERE year BETWEEN 2000 AND 2001 LIMIT 3;`);
 
 
+//// 4.1
+// asyncQuery(`SELECT * FROM car WHERE KM>40000;`);
+
+//// 4.2
+// asyncQuery(`SELECT year FROM car WHERE cost BETWEEN 200 AND 500;`);
+
+//// 4.3
+// asyncQuery(`SELECT * FROM car WHERE cost = 300 OR KM <= 60000 LIMIT 2;`);
+
+//// 4.4
+// asyncQuery(`SELECT model FROM car WHERE engine > 2000 AND cost < 500;`)
+
+// // SUM
+// asyncQuery(`SELECT SUM(cost) FROM car WHERE year=2015;`)
+
+// // AS
+// asyncQuery(`SELECT SUM(cost) AS sum FROM car WHERE year=2015;`);
+
+//// AVG
+// asyncQuery(`SELECT AVG(cost) as cost FROM car WHERE year=2015;`)
+
+//// COUNT
+// asyncQuery(`SELECT COUNT(ID) AS total_2015 FROM car WHERE year=2015;`)
+
+//// 5
+// asyncQuery(`SELECT SUM(engine) as total_eng FROM CAR;`)
+
+////6
+// asyncQuery(`SELECT AVG(cost) as avg_cost FROM car;`);
+
+//// NESTED QUERY 
+// asyncQuery(`SELECT COUNT(ID) FROM car WHERE cost > (SELECT AVG(cost) FROM CAR);`)
+
+// MIN
+// asyncQuery(`select MIN(cost) from car;`);
+
+// MAX
+// asyncQuery(`select MAX(cost) from car;`);
+
+//// 7
+// asyncQuery(`SELECT year, km FROM car WHERE KM=(SELECT MAX(KM) from car);`);
+
+//// 8.
+// asyncQuery(`SELECT COUNT(ID) FROM car WHERE year BETWEEN 2020 AND 2021;`)
+
+////9.
+// asyncQuery(`select * from car where year between 2020 and 2022 OR cost between 100 and 200;`);
 
 
+//// 10.1
+// asyncQuery(`ALTER TABLE car ADD COLUMN is_deleted BOOLEAN DEFAULT FALSE;`);
 
+//// 10.2
+// asyncQuery(`UPDATE car SET is_deleted=TRUE WHERE year < 2017;`);
+
+
+//// 11.1
+// asyncQuery(`ALTER TABLE car ADD COLUMN cost_usd DECIMAL(10, 2);`)
+
+//// 11.2
+// asyncQuery(`UPDATE car SET cost_usd=cost/3;`);
+
+// // 12
+// asyncQuery(`ALTER TABLE car CHANGE cost_usd usd_cost decimal(10, 2);`);
 
