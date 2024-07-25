@@ -1,12 +1,12 @@
 import runQuery from "./query_mysql";
 
 
-async function asyncQuery(q : string) {
+async function asyncQuery(q: string) {
     try {
         const res = await runQuery(q);
-        console.log(res);                
+        console.log(res);
     } catch (error) {
-        console.error(error)        
+        console.error(error)
     }
 }
 
@@ -185,3 +185,15 @@ async function asyncQuery(q : string) {
 // // 12
 // asyncQuery(`ALTER TABLE car CHANGE cost_usd usd_cost decimal(10, 2);`);
 
+//// order by
+// asyncQuery(`SELECT DISTINCT year FROM car ORDER BY year;`);
+
+// asyncQuery(`SELECT p.fname, c.model  FROM person AS p INNER JOIN car AS c ON p.car_id = c.id limit 1;`);
+
+// asyncQuery(`select city  from person where car_id = (select id from car order by year limit 1);`);
+// asyncQuery(`select city  from person p join car c on p.car_id = c.id order by c.year limit 1`);
+
+// asyncQuery(`select id from car order by year limit 1`)
+
+
+asyncQuery(`select count(*), year from car group by year;`);
