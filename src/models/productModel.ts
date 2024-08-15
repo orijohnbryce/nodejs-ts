@@ -7,7 +7,7 @@ class ProductModel {
     price: number;
     description: string;
 
-    constructor(pm: ProductModel){
+    constructor(pm: Partial<ProductModel>){
         this.id = pm.id;
         this.name = pm.name;
         this.description = pm.description;

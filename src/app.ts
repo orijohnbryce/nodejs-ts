@@ -7,6 +7,7 @@ import catchAll from "./middlewares/catchAll";
 import { logMW } from "./middlewares/logMW";
 import { authRoutes } from "./controllers/authControllers";
 import { productRouter } from "./controllers/productControllers";
+import { orderRouter } from "./controllers/orderControllers";
 
 // create server
 const server = express();
@@ -23,6 +24,7 @@ server.use(express.json());
 // register controllers
 server.use("/", productRouter)
 server.use("/", authRoutes)
+server.use("/", orderRouter)
 
 // Error handling
 server.use(catchAll);
