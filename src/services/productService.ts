@@ -3,6 +3,16 @@ import runQuery from "../db/dal";
 import ProductModel from "../models/productModel";
 import { ValidationError } from "../models/exceptions";
 
+
+export async function getProductsPaginated(page: number, limit: number): Promise<ProductModel[]> {
+    const offset = (page - 1) * limit;
+    const q = `SELECT * FROM product LIMIT ${limit} OFFSET ${offset}`;
+    const res = await runQuery(q);
+    const products = res.map((p) => new ProductModel(p));
+    return products;
+}
+
+
 export async function getProducts(id?: number): Promise<ProductModel[]> {
     let q = `SELECT * FROM product`;
 

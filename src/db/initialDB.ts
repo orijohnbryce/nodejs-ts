@@ -45,6 +45,16 @@ const createTables = async () => {
         )
         `
     await runQuery(Q)
+
+    Q = `
+    CREATE TABLE product_image (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        product_id INT,
+        image_path VARCHAR(255),
+        FOREIGN KEY (product_id) REFERENCES product(id)
+    );    
+    `
+    await runQuery(Q)
 }
 
 const createSampleData = async ()=>{
@@ -59,6 +69,110 @@ const createSampleData = async ()=>{
     Q = `
     INSERT INTO product (name, price, description) values 
         ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
         ('banana', 7, 'Greate Banana from the OTEF'),
         ('orange', 2, ''),
         ('bamba', 1, 'Isreali bamba')
@@ -90,8 +204,8 @@ const createSampleData = async ()=>{
     await runQuery(Q);            
 }
 
-// createTables().then(() => {
-//     console.log("Done creating tables");
-// })
+createTables().then(() => {
+    console.log("Done creating tables");
+    // createSampleData().then(()=>{console.log("Done adding data");})
+})
 
-// createSampleData().then(()=>{console.log("Done adding data");})
