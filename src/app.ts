@@ -8,9 +8,15 @@ import { logMW } from "./middlewares/logMW";
 import { authRoutes } from "./controllers/authControllers";
 import { productRouter } from "./controllers/productControllers";
 import { orderRouts } from "./controllers/orderControllers";
+import cors from "cors";
+import { productImageRouter } from "./controllers/productImageControllers";
+import expressFileUpload from "express-fileupload"
 
 // create server
 const server = express();
+
+// cors
+server.use(cors());
 
 // Doorman security chcek
 // server.use(doorman);
@@ -21,10 +27,16 @@ server.use(logMW);
 // load body
 server.use(express.json());
 
+// load files
+server.use(expressFileUpload())
+
 // register controllers
 server.use("/", productRouter);
 server.use("/", authRoutes);
 server.use("/", orderRouts);
+server.use("/", productImageRouter);
+
+
 // Error handling
 server.use(catchAll);
 

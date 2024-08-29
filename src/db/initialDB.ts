@@ -2,6 +2,17 @@ import runQuery from "./dal"
 
 const createTables = async () => {
     let Q = `
+        CREATE TABLE IF NOT EXISTS product_image  (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            product_id INT NOT NULL,
+            image_path VARCHAR(255) NOT NULL,
+            FOREIGN KEY (product_id) REFERENCES product(id)
+        );
+    `
+    await runQuery(Q);
+    return;
+
+    Q = `
         CREATE TABLE IF NOT EXISTS user  (
             id INT AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(50) NOT NULL,
@@ -54,10 +65,109 @@ const createSampleData = async ()=>{
         ('Moshe', '123', 'moshe@gmail.com', false),
         ('Ori', '123', 'ori@gmail.com', true);        
     `
-    await runQuery(Q);
+    // await runQuery(Q);
     
     Q = `
     INSERT INTO product (name, price, description) values 
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
+        ('apple', 3.5, 'Greate apple from the OTEF'),
+        ('banana', 7, 'Greate Banana from the OTEF'),
+        ('orange', 2, ''),
         ('apple', 3.5, 'Greate apple from the OTEF'),
         ('banana', 7, 'Greate Banana from the OTEF'),
         ('orange', 2, ''),
@@ -71,7 +181,7 @@ const createSampleData = async ()=>{
             (2, ''),
             (2, 'hurry up!')
             `   
-    await runQuery(Q);
+    // await runQuery(Q);
     
     Q = `
     INSERT INTO orderItem (order_id, product_id, quantity) values
@@ -87,11 +197,11 @@ const createSampleData = async ()=>{
             (3, 3, 4),
             (3, 4, 2)
             `
-    await runQuery(Q);            
+    // await runQuery(Q);            
 }
 
-// createTables().then(() => {
-//     console.log("Done creating tables");
-// })
+createTables().then(() => {
+    console.log("Done creating tables");
+})
 
 // createSampleData().then(()=>{console.log("Done adding data");})

@@ -1,11 +1,22 @@
 import express, { Request, Response, NextFunction } from "express";
-import { addProduct, getProducts, updateProduct } from "../services/productService";
+import { addProduct, getProducts, getProductsPaginated, updateProduct } from "../services/productService";
 import ProductModel from "../models/productModel";
 import { appConfig } from "../utils/appConfig";
 import { StatusCode } from "../models/statusEnum";
 import { verifyToeknAdminMW, verifyToeknMW } from "../middlewares/authMiddlewares";
 
 export const productRouter = express.Router();
+
+productRouter.get(appConfig.routePrefix + "/products-pg", 
+    async (req: Request, res: Response, next: NextFunction)=>{
+        try {
+            const {page=0, limit=10} =  req.query;
+            const products = await getProductsPaginated(page as number, limit as number);
+            res.status(StatusCode.Ok).json(products);
+        } catch (error) {
+            next(error)
+        }
+    })
 
 productRouter.get(appConfig.routePrefix + "/products", verifyToeknMW ,async (req: Request, res: Response, next: NextFunction) => {
     try {
