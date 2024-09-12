@@ -10,6 +10,6 @@ server.use(express_1.default.json());
 server.get("/", (req, res) => {
     res.send("<h1>Hello World!</h1>");
 });
-server.listen(3000, () => {
+server.listen(3000, '0.0.0.0', () => {
     console.log("Listening on http://localhost:3000");
 });
