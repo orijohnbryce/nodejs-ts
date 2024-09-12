@@ -11,8 +11,8 @@ class BaseAppConfig {
     readonly jwtSecrete = process.env.JWT_SECRET;
 
     readonly dbConfig = {               
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD
+        user: "avnadmin",
+        password: "AVNS_2TgZ_aOKDAFxn_eWGNl"
     }
 
 }
@@ -21,9 +21,9 @@ class DevAppconfig extends BaseAppConfig {
     readonly port : number = 4000        
     readonly dbConfig = {
         ...this.dbConfig,
-        host: 'localhost',
-        port: 3309,
-        database: 'store',                
+        host: 'ori-mysql-ori-proj.i.aivencloud.com',
+        port: 28550,
+        database: 'defaultdb',
     }
 }
 

@@ -37,6 +37,7 @@ const createTables = async () => {
 
     Q = `
     CREATE TABLE IF NOT EXISTS orderItem (
+        id INT AUTO_INCREMENT PRIMARY KEY,
         order_id INT NOT NULL,
         product_id INT NOT NULL,
         quantity INT NOT NULL,
