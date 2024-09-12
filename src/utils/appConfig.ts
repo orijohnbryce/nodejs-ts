@@ -12,7 +12,7 @@ class BaseAppConfig {
 
     readonly dbConfig = {               
         user: "avnadmin",
-        password: ""
+        password: "AVNS_2TgZ_aOKDAFxn_eWGNl"
     }
 
 }
