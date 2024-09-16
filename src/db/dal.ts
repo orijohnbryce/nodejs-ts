@@ -5,12 +5,12 @@ const connection = mysql.createPool({
     host: appConfig.dbConfig.host,
     user: appConfig.dbConfig.user,
     password: appConfig.dbConfig.password,
-    database: appConfig.dbConfig.database,
+    // database: appConfig.dbConfig.database,
     port: appConfig.dbConfig.port
 })
 
 // Function to run an SQL query
-export default function runQuery(q: string, params: any[]=[]): Promise<any[]> {
+export default function runQuery(q: string, params: any[] = []): Promise<any[]> {
     return new Promise((resolve, reject) => {
 
         connection.query(q, params, (err, res) => {
@@ -25,6 +25,18 @@ export default function runQuery(q: string, params: any[]=[]): Promise<any[]> {
 
 // runQuery("select * from product").then(...).catch(...)
 
-export const closeDB = async () =>{
+export const closeDB = async () => {
     connection.end()
 }
+
+
+console.log(appConfig.dbConfig);
+
+runQuery('CREATE DATABASE IF NOT EXISTS store_dev')
+    .then(() => {
+        console.log("DB created");
+    }).catch((e) => {
+        console.log("DB creation error: ", e);
+    }).finally(async ()=>{
+        await closeDB()
+    });
