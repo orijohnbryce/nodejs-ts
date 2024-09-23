@@ -24,3 +24,5 @@ export default function runQuery(q: string): Promise<any[]> {
 }
 
 // runQuery("select * from product").then(...).catch(...)
+
+runQuery("DELETE FROM product_image WHERE ID=4;")

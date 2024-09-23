@@ -30,3 +30,6 @@ Undeclared variable: undefined
 Undeclared variable: NaN
 Undeclared variable: NaN
 Unknown column 'b990275a' in 'field list'
+ENOENT: no such file or directory, open 'C:\Users\jbt\Desktop\Ori\nodejs_template\src\assets\images\dabecd47-889d-4910-aad6-5ee0eeeac30f.png'
+ENOENT: no such file or directory, stat 'C:\Users\jbt\Desktop\Ori\nodejs_template\src\assets\images\f192e512-aa22-4b44-9ca5-77540b0e5ddb.JPEG'
+ENOENT: no such file or directory, stat 'C:\Users\jbt\Desktop\Ori\nodejs_template\src\assets\images\f192e512-aa22-4b44-9ca5-77540b0e5ddb.JPEG'

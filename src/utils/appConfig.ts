@@ -1,4 +1,7 @@
 import path from "path";
+import dotenv from "dotenv"
+
+dotenv.config();
 
 class AppConfig {
     readonly port : number = 4000;
@@ -10,12 +13,15 @@ class AppConfig {
     readonly doormanKey = "rivka-token-temp-test-whatever";
     readonly jwtSecrete = "This is example for secrete key %^&#$%#B FGERT";
     readonly dbConfig = {
-        host: 'localhost',
-        port: 3309,
+        host: process.env.DB_HOST,
+        port: 3306,
         database: 'store',
-        user: 'root',
-        password: ''
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD
     }
+    readonly s3key = process.env.S3_KEY;
+    readonly s3secret = process.env.S3_SECRET;
+    readonly s3bucket = "orstore1";    
 }
 
 export const appConfig = new AppConfig()
