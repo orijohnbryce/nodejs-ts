@@ -89,5 +89,3 @@ export async function uploadS3ByStream(fileStream: Readable, docName: string) {
         console.log(error);
     }
 }
-
-uploadS3ByPath("C:\\Users\\jbt\\Desktop\\Ori\\nodejs_template\\src\\assets\\images\\b8baf8ae-c404-41ae-990a-67a62eb93a27.png")
