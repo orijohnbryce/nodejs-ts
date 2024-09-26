@@ -5,8 +5,8 @@ dotenv.config()
 
 class BaseAppConfig {
     readonly routePrefix = "/api/v1";
-    readonly errorLogFile = __dirname + "\\..\\logs\\error.log";
-    readonly accessLogFile = __dirname + "\\..\\logs\\access.log";
+    readonly errorLogFile = __dirname + "\\..\\..\\logs\\error.log";
+    readonly accessLogFile = __dirname + "\\..\\..\\logs\\access.log";
     readonly doormanKey = process.env.DOORMAN_KEY;
     readonly jwtSecrete = process.env.JWT_SECRET;
 
@@ -28,12 +28,12 @@ class DevAppconfig extends BaseAppConfig {
 }
 
 class ProdAppconfig extends BaseAppConfig {
-    readonly port : number = 443    
+    readonly port : number = 4000    
     readonly dbConfig = {
         ...this.dbConfig,
-        host: 'aws://db:/localZone-use123123',
-        port: 3309,
-        database: 'store_prod',                
+        host: process.env.DB_HOST,
+        port: 3306,
+        database: 'store',
     }
 }
 
