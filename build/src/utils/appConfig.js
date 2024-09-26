@@ -5,7 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.appConfig = void 0;
 const dotenv_1 = __importDefault(require("dotenv"));
+const fs_1 = require("fs");
 // load enviroment variables
+if (!(0, fs_1.existsSync)(".env")) {
+    throw new Error("⚠️ .env file not found ⚠️");
+}
 dotenv_1.default.config();
 class BaseAppConfig {
     constructor() {

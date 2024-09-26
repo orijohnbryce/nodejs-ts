@@ -1,6 +1,10 @@
 import dotenv from "dotenv"
+import { existsSync } from "fs";
 
 // load enviroment variables
+if (!existsSync(".env")) {
+    throw new Error("⚠️ .env file not found ⚠️");
+  }
 dotenv.config()
 
 class BaseAppConfig {
