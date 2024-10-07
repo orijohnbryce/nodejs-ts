@@ -3,14 +3,18 @@ import { Server as SocketServer, Socket } from "socket.io";
 
 export default function handleSocketIo(httpServer: Server): void {
   const options = { cors: { origin: "*" } }; // for any client
-
+  
   const socketServer = new SocketServer(httpServer, options);
 
   socketServer.sockets.on("connection", (socket: Socket) => {
     
+    // extract username from handshake
     const username = socket.handshake.query.username as string;
 
-    console.log("Client connected!");
+    console.log("Client connected!" + username);
+
+    // let everybody knows new user connected
+    socketServer.sockets.emit("server-msg", {username, msg: "Joined"});
 
     socket.on("new-msg", (msg: string) => {
       console.log("new message: " + msg);
