@@ -1,13 +1,10 @@
-import express, { Request, Response } from "express"
+import express from "express";
+import appConfig from "./utils/appConfig";
+import handleSocketIo from "./services/socket-service";
 
-const server = express();
+const expressServer = express();
+const httpServer = expressServer.listen(appConfig.port, () => {
+  console.log("Listening on http://localhost:" + appConfig.port);
+});
 
-// load body
-server.use(express.json());
-
-server.get("/", (req: Request, res: Response)=>{
-    res.send("<h1>Hello World!</h1>")
-})
-
-server.listen(3000, ()=>{console.log("Listening on http://localhost:3000");
-})
+handleSocketIo(httpServer);
