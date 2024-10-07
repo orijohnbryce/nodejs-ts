@@ -1,5 +1,7 @@
 import { Server } from "http"
 import { Server as SocketServer, Socket } from "socket.io"
+import { askGPT } from "./ai-service";
+
 
 
 export default function handleScketIO(httpServer: Server): void {
@@ -10,21 +12,9 @@ export default function handleScketIO(httpServer: Server): void {
 
     socketServer.sockets.on("connection", (socket: Socket) => {
 
-        console.log("New client connected!");
-
-        const username = socket.handshake.query.username as string;
-
-        socketServer.sockets.emit("server-msg", {msg: `${username} join the room!`, "username": "system"})
-
-        socket.on("client-msg", (msg: string) => {
-            console.log("new message: " + msg);
-
-            socketServer.sockets.emit("server-msg", {username, msg})
-        })
-
-        socket.on("disconnect", () => {
-            console.log("client disconnected!");
-            socketServer.sockets.emit("server-msg", {msg: `${username} left the room!`, "username": "system"})
+        socket.on("client-msg", async (msg: string) => {
+            const aiRes = await askGPT(msg);
+            socket.emit("server-msg", aiRes)
         })
     })
 }
